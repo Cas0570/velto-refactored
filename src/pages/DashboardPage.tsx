@@ -46,7 +46,10 @@ export function DashboardPage() {
               {requests.map((request) => (
                 <RequestCard
                   key={request.id}
-                  request={request}
+                  request={{
+                    ...request,
+                    paymentMethods: [...request.paymentMethods],
+                  }}
                   variant="default"
                   onAction={handleRequestAction}
                 />
