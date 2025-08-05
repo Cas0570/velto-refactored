@@ -57,7 +57,7 @@ export function NavigationBar({
   return (
     <nav
       className={cn(
-        "fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50 safe-area-bottom",
+        "fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50",
         className
       )}
     >
