@@ -1,4 +1,5 @@
 // src/pages/ProfilePage.tsx
+
 import { MobileLayout } from "@/components/layout/MobileLayout";
 import { Header } from "@/components/common/Header";
 import { MOCK_DATA } from "@/lib/constants";

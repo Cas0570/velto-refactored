@@ -1,4 +1,5 @@
 // src/pages/OnboardingPage.tsx
+
 import { MobileLayout } from "@/components/layout/MobileLayout";
 import { Header } from "@/components/common/Header";
 

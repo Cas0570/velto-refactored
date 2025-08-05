@@ -1,4 +1,5 @@
 // src/pages/NotFoundPage.tsx
+
 import { useNavigate } from "react-router-dom";
 import { Home, AlertCircle } from "lucide-react";
 import { MobileLayout } from "@/components/layout/MobileLayout";
