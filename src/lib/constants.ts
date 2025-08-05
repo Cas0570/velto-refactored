@@ -124,6 +124,16 @@ export const STORAGE_KEYS = {
   THEME: "velto-theme",
   DRAFT_REQUEST: "velto-draft-request",
   ONBOARDING_PROGRESS: "velto-onboarding-progress",
+  WIZARD_PROGRESS: "velto-wizard-progress",
+} as const;
+
+// Wizard Configuration
+export const WIZARD_CONFIG = {
+  AUTO_SAVE_DELAY: 1000, // ms
+  SHOW_PROGRESS_BY_DEFAULT: true,
+  SHOW_STEP_NUMBERS_BY_DEFAULT: true,
+  ALLOW_BACK_NAVIGATION_BY_DEFAULT: true,
+  ANIMATION_DURATION: 300, // ms
 } as const;
 
 // Animation Durations (in ms)

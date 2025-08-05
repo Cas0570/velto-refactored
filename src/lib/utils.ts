@@ -339,3 +339,99 @@ export const storage = {
     }
   },
 };
+
+/**
+ * Wizard utility functions
+ */
+export const wizardUtils = {
+  /**
+   * Calculate progress percentage for wizard
+   */
+  calculateProgress: (currentStep: number, totalSteps: number): number => {
+    if (totalSteps === 0) return 0;
+    return Math.round(((currentStep + 1) / totalSteps) * 100);
+  },
+
+  /**
+   * Generate wizard step ID
+   */
+  generateStepId: (prefix: string, index: number): string => {
+    return `${prefix}-step-${index}`;
+  },
+
+  /**
+   * Save wizard progress to localStorage
+   */
+  saveProgress: <T>(wizardId: string, data: T, currentStep: number): boolean => {
+    const progressData = {
+      data,
+      currentStep,
+      timestamp: Date.now(),
+    };
+    return storage.set(`wizard-${wizardId}`, progressData);
+  },
+
+  /**
+   * Load wizard progress from localStorage
+   */
+  loadProgress: <T>(wizardId: string): { data: T; currentStep: number } | null => {
+    const progressData = storage.get<{
+      data: T;
+      currentStep: number;
+      timestamp: number;
+    }>(`wizard-${wizardId}`);
+
+    if (!progressData) return null;
+
+    // Check if progress is not too old (24 hours)
+    const isExpired = Date.now() - progressData.timestamp > 24 * 60 * 60 * 1000;
+    if (isExpired) {
+      storage.remove(`wizard-${wizardId}`);
+      return null;
+    }
+
+    return {
+      data: progressData.data,
+      currentStep: progressData.currentStep,
+    };
+  },
+
+  /**
+   * Clear wizard progress from localStorage
+   */
+  clearProgress: (wizardId: string): boolean => {
+    return storage.remove(`wizard-${wizardId}`);
+  },
+
+  /**
+   * Validate step data against required fields
+   */
+  validateStepData: <T extends Record<string, any>>(
+    data: T,
+    requiredFields: (keyof T)[]
+  ): { isValid: boolean; missingFields: string[] } => {
+    const missingFields: string[] = [];
+
+    for (const field of requiredFields) {
+      const value = data[field];
+      if (value === undefined || value === null || value === "") {
+        missingFields.push(String(field));
+      }
+    }
+
+    return {
+      isValid: missingFields.length === 0,
+      missingFields,
+    };
+  },
+
+  /**
+   * Merge wizard data with new partial data
+   */
+  mergeWizardData: <T extends Record<string, any>>(
+    currentData: T,
+    newData: Partial<T>
+  ): T => {
+    return { ...currentData, ...newData };
+  },
+};

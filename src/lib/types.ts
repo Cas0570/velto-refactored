@@ -255,21 +255,60 @@ export interface StackProps {
   direction?: "vertical" | "horizontal";
 }
 
-// Step types for multi-step forms
-export interface StepProps<T = any> {
+// Multi-step wizard types
+export interface WizardStep<T = any> {
+  id: string;
+  title: string;
+  description?: string;
+  component: React.ComponentType<WizardStepProps<T>>;
+  isOptional?: boolean;
+  canSkip?: boolean;
+}
+
+export interface WizardStepProps<T = any> {
   data: T;
   onChange: (data: Partial<T>) => void;
   onNext: () => void;
   onBack: () => void;
+  onSkip?: () => void;
   canProceed: boolean;
+  isLoading?: boolean;
+  errors?: Record<string, string>;
 }
 
-export type Step = {
-  id: string;
-  title: string;
-  description?: string;
-  component: React.ComponentType<StepProps>;
-};
+export interface WizardProps<T = any> {
+  steps: WizardStep<T>[];
+  initialData?: Partial<T>;
+  onComplete: (data: T) => void | Promise<void>;
+  onCancel?: () => void;
+  title?: string;
+  subtitle?: string;
+  showProgress?: boolean;
+  showStepNumbers?: boolean;
+  allowBackNavigation?: boolean;
+  className?: string;
+  variant?: "default" | "compact" | "minimal";
+}
+
+export interface WizardContextValue<T = any> {
+  currentStepIndex: number;
+  totalSteps: number;
+  data: T;
+  isLoading: boolean;
+  errors: Record<string, string>;
+  canGoBack: boolean;
+  canGoNext: boolean;
+  goToStep: (stepIndex: number) => void;
+  nextStep: () => void;
+  previousStep: () => void;
+  skipStep: () => void;
+  updateData: (newData: Partial<T>) => void;
+  setLoading: (loading: boolean) => void;
+  setErrors: (errors: Record<string, string>) => void;
+  complete: () => void;
+  cancel: () => void;
+}
+
 
 // Error types
 export interface AppError {

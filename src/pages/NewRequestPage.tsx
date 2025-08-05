@@ -1,35 +1,80 @@
 // src/pages/NewRequestPage.tsx
 
 import { useNavigate } from "react-router-dom";
-import { MobileLayout } from "@/components/layout/MobileLayout";
-import { Header } from "@/components/common/Header";
+import { Wizard } from "@/components/common/Wizard";
+import {
+  AmountStep,
+  DescriptionStep,
+  PaymentMethodSelectionStep,
+  DraftPreviewStep,
+  RequestCreatedStep,
+} from "@/components/common/PaymentRequestSteps";
 import { ROUTES } from "@/lib/constants";
+import type { WizardStep, CreateRequestForm } from "@/lib/types";
 
 export function NewRequestPage() {
   const navigate = useNavigate();
 
+  const paymentRequestSteps: WizardStep<CreateRequestForm>[] = [
+    {
+      id: "amount",
+      title: "Bedrag",
+      description: "Hoeveel wil je vragen?",
+      component: AmountStep,
+    },
+    {
+      id: "description",
+      title: "Omschrijving",
+      description: "Waar is het verzoek voor?",
+      component: DescriptionStep,
+    },
+    {
+      id: "payment-methods",
+      title: "Betaalmethodes",
+      description: "Hoe kunnen klanten betalen?",
+      component: PaymentMethodSelectionStep,
+    },
+    {
+      id: "draft-preview",
+      title: "Bijna klaar",
+      description: "Controleer je verzoek",
+      component: DraftPreviewStep,
+    },
+    {
+      id: "request-created",
+      title: "Voltooid",
+      description: "Verzoek aangemaakt",
+      component: RequestCreatedStep,
+    },
+  ];
+
+  const handlePaymentRequestComplete = async (data: CreateRequestForm) => {
+    console.log("Payment request created:", data);
+
+    // TODO: Implement actual API call to create payment request
+    // const response = await createPaymentRequest(data);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Navigate to dashboard after successful creation
+    navigate(ROUTES.DASHBOARD);
+  };
+
+  const handlePaymentRequestCancel = () => {
+    navigate(ROUTES.HOME);
+  };
+
   return (
-    <MobileLayout showNavigation={false}>
-      <div className="p-4">
-        <Header
-          title="Nieuw verzoek"
-          subtitle="Multi-step request creation wizard coming soon"
-          variant="minimal"
-          showBackButton
-          onBackClick={() => navigate(ROUTES.DASHBOARD)}
-        />
-        <div className="mt-8 text-center">
-          <p className="text-muted-foreground">
-            This page will contain the request creation wizard with:
-          </p>
-          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>• Amount input step</li>
-            <li>• Description and details</li>
-            <li>• Payment method selection</li>
-            <li>• Review and confirmation</li>
-          </ul>
-        </div>
-      </div>
-    </MobileLayout>
+    <Wizard<CreateRequestForm>
+      steps={paymentRequestSteps}
+      onComplete={handlePaymentRequestComplete}
+      onCancel={handlePaymentRequestCancel}
+      title="Nieuw betaalverzoek"
+      subtitle="Maak in een paar stappen je verzoek aan"
+      showProgress={true}
+      showStepNumbers={true}
+      allowBackNavigation={true}
+    />
   );
 }
