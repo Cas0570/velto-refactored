@@ -1,14 +1,7 @@
 // src/components/layout/Grid.tsx
 
 import { cn } from "@/lib/utils";
-
-interface GridProps {
-  children: React.ReactNode;
-  className?: string;
-  cols?: 1 | 2 | 3 | 4 | 6;
-  gap?: "none" | "sm" | "md" | "lg";
-  responsive?: boolean;
-}
+import type { GridProps } from "@/lib/types";
 
 export function Grid({
   children,

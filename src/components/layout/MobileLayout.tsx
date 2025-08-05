@@ -2,13 +2,7 @@
 
 import { AppLayout } from "@/components/layout/AppLayout";
 import { cn } from "@/lib/utils";
-
-interface MobileLayoutProps {
-  children: React.ReactNode;
-  className?: string;
-  showNavigation?: boolean;
-  maxWidth?: "sm" | "md" | "lg" | "full";
-}
+import type { MobileLayoutProps } from "@/lib/types";
 
 export function MobileLayout({
   children,

@@ -1,11 +1,7 @@
 // src/components/common/LoadingSpinner.tsx
 
 import { cn } from "@/lib/utils";
-
-interface LoadingSpinnerProps {
-  size?: "sm" | "md" | "lg";
-  className?: string;
-}
+import type { LoadingSpinnerProps } from "@/lib/types";
 
 export function LoadingSpinner({
   size = "md",

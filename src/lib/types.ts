@@ -1,5 +1,7 @@
 // src/lib/types.ts
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export interface User {
   id: string;
   firstName: string;
@@ -128,6 +130,15 @@ export interface HeaderProps {
   onAvatarClick?: () => void;
 }
 
+export interface ExtendedHeaderProps extends HeaderProps {
+  variant?: "default" | "centered" | "minimal";
+  showBackButton?: boolean;
+  onBackClick?: () => void;
+  avatarSrc?: string;
+  avatarFallback?: string;
+  className?: string;
+}
+
 // Navigation types
 export interface NavItem {
   to: string;
@@ -157,8 +168,94 @@ export interface PaginatedResponse<T> {
 // Theme types
 export type Theme = "light" | "dark" | "system";
 
+export interface EmptyStateProps {
+  icon?: React.ReactNode;
+  title: string;
+  description?: string;
+  action?: React.ReactNode;
+  className?: string;
+}
+
+export interface ErrorStateProps {
+  title?: string;
+  description?: string;
+  onRetry?: () => void;
+  className?: string;
+}
+
+export interface LoadingSpinnerProps {
+  size?: "sm" | "md" | "lg";
+  className?: string;
+}
+
+export interface LoadingStateProps {
+  title?: string;
+  description?: string;
+  size?: "sm" | "md" | "lg";
+  className?: string;
+}
+
+export interface ProgressStepsProps {
+  steps: Array<{ id: string; title: string; description?: string }>;
+  currentStep: string;
+  className?: string;
+}
+
+export interface StatusBadgeProps {
+  status: PaymentRequestStatus;
+  className?: string;
+}
+
+export interface AppLayoutProps {
+  children: React.ReactNode;
+  className?: string;
+  showNavigation?: boolean;
+  navigationVariant?: "bottom" | "top";
+}
+
+export interface GridProps {
+  children: React.ReactNode;
+  className?: string;
+  cols?: 1 | 2 | 3 | 4 | 6;
+  gap?: "none" | "sm" | "md" | "lg";
+  responsive?: boolean;
+}
+
+export interface MobileLayoutProps {
+  children: React.ReactNode;
+  className?: string;
+  showNavigation?: boolean;
+  maxWidth?: "sm" | "md" | "lg" | "full";
+}
+
+export interface NavigationBarProps {
+  variant?: "top" | "bottom";
+  className?: string;
+}
+
+export interface PageContainerProps {
+  children: React.ReactNode;
+  className?: string;
+  padding?: "none" | "sm" | "md" | "lg";
+}
+
+export interface SectionProps {
+  children: React.ReactNode;
+  className?: string;
+  title?: string;
+  description?: string;
+  spacing?: "none" | "sm" | "md" | "lg" | "xl";
+}
+
+export interface StackProps {
+  children: React.ReactNode;
+  className?: string;
+  spacing?: "none" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+  align?: "start" | "center" | "end" | "stretch";
+  direction?: "vertical" | "horizontal";
+}
+
 // Step types for multi-step forms
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface StepProps<T = any> {
   data: T;
   onChange: (data: Partial<T>) => void;
@@ -178,6 +275,5 @@ export type Step = {
 export interface AppError {
   code: string;
   message: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   details?: any;
 }

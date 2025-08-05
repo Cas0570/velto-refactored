@@ -4,11 +4,7 @@ import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/lib/constants";
 import { Badge } from "@/components/ui/badge";
-
-interface NavigationBarProps {
-  variant?: "top" | "bottom";
-  className?: string;
-}
+import type { NavigationBarProps } from "@/lib/types";
 
 export function NavigationBar({
   variant = "bottom",

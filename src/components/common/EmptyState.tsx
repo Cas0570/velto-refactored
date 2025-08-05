@@ -1,14 +1,7 @@
 // src/components/common/EmptyState.tsx
 
 import { cn } from "@/lib/utils";
-
-interface EmptyStateProps {
-  icon?: React.ReactNode;
-  title: string;
-  description?: string;
-  action?: React.ReactNode;
-  className?: string;
-}
+import type { EmptyStateProps } from "@/lib/types";
 
 export function EmptyState({
   icon,

@@ -2,13 +2,7 @@
 
 import { LoadingSpinner } from "./LoadingSpinner";
 import { cn } from "@/lib/utils";
-
-interface LoadingStateProps {
-  title?: string;
-  description?: string;
-  size?: "sm" | "md" | "lg";
-  className?: string;
-}
+import type { LoadingStateProps } from "@/lib/types";
 
 export function LoadingState({
   title = "Laden...",

@@ -3,17 +3,8 @@
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import type { HeaderProps } from "@/lib/types";
+import type { ExtendedHeaderProps } from "@/lib/types";
 import { ArrowLeft } from "lucide-react";
-
-interface ExtendedHeaderProps extends HeaderProps {
-  variant?: "default" | "centered" | "minimal";
-  showBackButton?: boolean;
-  onBackClick?: () => void;
-  avatarSrc?: string;
-  avatarFallback?: string;
-  className?: string;
-}
 
 export function Header({
   title,

@@ -1,14 +1,7 @@
 // src/components/layout/Section.tsx
 
 import { cn } from "@/lib/utils";
-
-interface SectionProps {
-  children: React.ReactNode;
-  className?: string;
-  title?: string;
-  description?: string;
-  spacing?: "none" | "sm" | "md" | "lg" | "xl";
-}
+import type { SectionProps } from "@/lib/types";
 
 export function Section({
   children,

@@ -1,14 +1,7 @@
 // src/components/layout/Stack.tsx
 
 import { cn } from "@/lib/utils";
-
-interface StackProps {
-  children: React.ReactNode;
-  className?: string;
-  spacing?: "none" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
-  align?: "start" | "center" | "end" | "stretch";
-  direction?: "vertical" | "horizontal";
-}
+import type { StackProps } from "@/lib/types";
 
 export function Stack({
   children,

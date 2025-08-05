@@ -1,12 +1,7 @@
 // src/components/layout/PageContainer.tsx
 
 import { cn } from "@/lib/utils";
-
-interface PageContainerProps {
-  children: React.ReactNode;
-  className?: string;
-  padding?: "none" | "sm" | "md" | "lg";
-}
+import type { PageContainerProps } from "@/lib/types";
 
 export function PageContainer({
   children,

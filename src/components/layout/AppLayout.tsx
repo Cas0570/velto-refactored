@@ -1,15 +1,8 @@
 // src/components/layout/AppLayout.tsx
 
-import * as React from "react";
 import { cn } from "@/lib/utils";
 import { NavigationBar } from "./NavigationBar";
-
-interface AppLayoutProps {
-  children: React.ReactNode;
-  className?: string;
-  showNavigation?: boolean;
-  navigationVariant?: "bottom" | "top";
-}
+import type { AppLayoutProps } from "@/lib/types";
 
 export function AppLayout({
   children,

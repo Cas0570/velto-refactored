@@ -1,12 +1,7 @@
 // src/components/common/ProgressSteps.tsx
 
 import { cn } from "@/lib/utils";
-
-interface ProgressStepsProps {
-  steps: Array<{ id: string; title: string; description?: string }>;
-  currentStep: string;
-  className?: string;
-}
+import type { ProgressStepsProps } from "@/lib/types";
 
 export function ProgressSteps({
   steps,

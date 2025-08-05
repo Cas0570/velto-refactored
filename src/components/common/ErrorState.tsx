@@ -3,13 +3,7 @@
 import { AlertCircle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-interface ErrorStateProps {
-  title?: string;
-  description?: string;
-  onRetry?: () => void;
-  className?: string;
-}
+import type { ErrorStateProps } from "@/lib/types";
 
 export function ErrorState({
   title = "Er ging iets mis",
