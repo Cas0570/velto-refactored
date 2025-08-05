@@ -1,3 +1,5 @@
+// src/lib/constants.ts
+
 import type { PaymentMethod, NavItem } from "./types";
 import { Home, FileText, User } from "lucide-react";
 

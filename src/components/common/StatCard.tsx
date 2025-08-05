@@ -8,40 +8,41 @@ import { cn } from "@/lib/utils";
 import type { StatCardProps } from "@/lib/types";
 
 const variantStyles = {
-  success: {
+  green: {
     background:
       "bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20",
     border: "border-green-200 dark:border-green-800",
-    iconBg: "bg-success",
+    iconBg: "bg-green-500",
     valueColor: "text-green-900 dark:text-green-100",
     labelColor: "text-green-700 dark:text-green-300",
     trendColor: "text-green-600 dark:text-green-400",
   },
-  warning: {
+  orange: {
     background:
       "bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20",
     border: "border-orange-200 dark:border-orange-800",
-    iconBg: "bg-warning",
+    iconBg: "bg-orange-500",
     valueColor: "text-orange-900 dark:text-orange-100",
     labelColor: "text-orange-700 dark:text-orange-300",
     trendColor: "text-orange-600 dark:text-orange-400",
   },
-  info: {
+  cyan: {
     background:
-      "bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20",
-    border: "border-blue-200 dark:border-blue-800",
-    iconBg: "bg-blue-500",
-    valueColor: "text-blue-900 dark:text-blue-100",
-    labelColor: "text-blue-700 dark:text-blue-300",
-    trendColor: "text-blue-600 dark:text-blue-400",
+      "bg-gradient-to-br from-cyan-50 to-cyan-100 dark:from-cyan-950/20 dark:to-cyan-900/20",
+    border: "border-cyan-200 dark:border-cyan-800",
+    iconBg: "bg-cyan-500",
+    valueColor: "text-cyan-900 dark:text-cyan-100",
+    labelColor: "text-cyan-700 dark:text-cyan-300",
+    trendColor: "text-cyan-600 dark:text-cyan-400",
   },
-  primary: {
-    background: "bg-gradient-to-br from-primary/10 to-primary/5",
-    border: "border-primary/20",
-    iconBg: "bg-primary",
-    valueColor: "text-primary-foreground",
-    labelColor: "text-foreground",
-    trendColor: "text-primary",
+  purple: {
+    background:
+      "bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/20 dark:to-purple-900/20",
+    border: "border-purple-200 dark:border-purple-800",
+    iconBg: "bg-purple-500",
+    valueColor: "text-purple-900 dark:text-purple-100",
+    labelColor: "text-purple-700 dark:text-purple-300",
+    trendColor: "text-purple-600 dark:text-purple-400",
   },
 };
 
@@ -75,9 +76,12 @@ export function StatCard({
               styles.iconBg
             )}
           >
-            {React.cloneElement(icon as React.ReactElement, {
-              className: "h-5 w-5 text-white",
-            })}
+            {React.cloneElement(
+              icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+              {
+                className: "h-5 w-5 text-white",
+              }
+            )}
           </div>
           <div>
             <p className={cn("text-2xl font-bold mb-1", styles.valueColor)}>
@@ -102,9 +106,12 @@ export function StatCard({
     >
       <div className="flex items-start justify-between mb-3">
         <div className={cn("p-2 rounded-lg", styles.iconBg)}>
-          {React.cloneElement(icon as React.ReactElement, {
-            className: "h-4 w-4 text-white",
-          })}
+          {React.cloneElement(
+            icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+            {
+              className: "h-4 w-4 text-white",
+            }
+          )}
         </div>
         {trend && (
           <Badge

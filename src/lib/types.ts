@@ -106,7 +106,7 @@ export interface StatCardProps {
   icon: React.ReactNode;
   value: string | number;
   label: string;
-  variant: "success" | "warning" | "info" | "primary";
+  variant: "green" | "orange" | "cyan" | "purple";
   trend?: {
     value: string | number;
     positive: boolean;

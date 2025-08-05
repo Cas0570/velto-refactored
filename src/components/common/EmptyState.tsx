@@ -1,4 +1,5 @@
 // src/components/common/EmptyState.tsx
+
 import { cn } from "@/lib/utils";
 
 interface EmptyStateProps {

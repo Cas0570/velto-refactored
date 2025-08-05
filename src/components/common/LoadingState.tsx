@@ -1,4 +1,5 @@
 // src/components/common/LoadingState.tsx
+
 import { LoadingSpinner } from "./LoadingSpinner";
 import { cn } from "@/lib/utils";
 
