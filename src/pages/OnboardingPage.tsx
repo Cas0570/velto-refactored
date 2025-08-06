@@ -43,16 +43,16 @@ export function OnboardingPage() {
 
   const handleOnboardingComplete = async (data: OnboardingForm) => {
     console.log("Onboarding completed:", data);
-    
+
     // TODO: Here you would implement actual API calls:
     // 1. Create user account with personal info
     // 2. Set up payment methods and connections
     // 3. Save user preferences
     // 4. Send welcome email
-    
+
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     // For now, just navigate to home page
     navigate(ROUTES.HOME);
   };
@@ -76,6 +76,7 @@ export function OnboardingPage() {
         paymentMethods: [],
         connectedAccounts: {},
       }}
+      className="safe-area-bottom"
     />
   );
 }
