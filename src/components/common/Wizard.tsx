@@ -61,6 +61,7 @@ export function Wizard<T extends Record<string, any>>({
 
   // Determine if current step can proceed based on data validation
   const canProceed = React.useMemo(() => {
+    // Payment request wizard validation
     if (currentStep.id === "amount") {
       const validation = validateAmount((data as any).amount || "");
       return validation.isValid;
@@ -77,7 +78,28 @@ export function Wizard<T extends Record<string, any>>({
         (data as any).paymentMethods && (data as any).paymentMethods.length > 0
       );
     }
-    return true; // Review step can always proceed
+
+    // Onboarding wizard validation
+    if (currentStep.id === "personal-info") {
+      const formData = data as any;
+      return (
+        formData.firstName?.trim() &&
+        formData.lastName?.trim() &&
+        formData.email?.trim() &&
+        formData.firstName.length >= VALIDATION.MIN_NAME_LENGTH &&
+        formData.lastName.length >= VALIDATION.MIN_NAME_LENGTH &&
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
+        (!formData.phone || /^(\+31|0031|0)[6-9]\d{8}$/.test(formData.phone.replace(/\s|-/g, "")))
+      );
+    }
+    if (currentStep.id === "payment-methods-setup") {
+      return (
+        (data as any).paymentMethods && (data as any).paymentMethods.length > 0
+      );
+    }
+
+    // Profile customization, welcome tutorial, draft preview and request created steps can always proceed
+    return true;
   }, [currentStep.id, data]);
 
   // Update wizard context with canProceed status
