@@ -10,7 +10,7 @@ export function WelcomePage() {
   const navigate = useNavigate();
 
   return (
-    <MobileLayout showNavigation={false} maxWidth="full">
+    <MobileLayout showNavigation={false} maxWidth="full" className="px-0">
       <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-background to-secondary">
         <div className="w-full max-w-sm space-y-8">
           {/* Logo */}
