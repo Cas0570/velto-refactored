@@ -348,7 +348,7 @@ export function DraftPreviewStep({ data }: WizardStepProps<CreateRequestForm>) {
           Ga naar concept pagina
         </Button>
         <p className="text-xs text-center text-muted-foreground">
-          Of klik op "Voltooien" om het verzoek definitief te maken
+          Of klik op "Volgende" om het verzoek definitief te maken
         </p>
       </div>
     </div>
@@ -358,7 +358,9 @@ export function DraftPreviewStep({ data }: WizardStepProps<CreateRequestForm>) {
 /**
  * Step 5: Final Confirmation - Request Created
  */
-export function RequestCreatedStep({ data }: WizardStepProps<CreateRequestForm>) {
+export function RequestCreatedStep({
+  data,
+}: WizardStepProps<CreateRequestForm>) {
   const selectedMethods = PAYMENT_METHODS.filter((method) =>
     data.paymentMethods?.includes(method.id)
   );

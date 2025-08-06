@@ -75,6 +75,7 @@ export function NewRequestPage() {
       showProgress={true}
       showStepNumbers={true}
       allowBackNavigation={true}
+      className="safe-area-bottom"
     />
   );
 }
