@@ -2,6 +2,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ROUTES } from "@/lib/constants";
 
 // Pages
@@ -30,19 +31,21 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
-          <Route path={ROUTES.ONBOARDING} element={<OnboardingPage />} />
-          <Route path={ROUTES.HOME} element={<HomePage />} />
-          <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
-          <Route path={ROUTES.NEW_REQUEST} element={<NewRequestPage />} />
-          <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
-          <Route path={ROUTES.BRANDING} element={<BrandingPage />} />
-          <Route path={`${ROUTES.PAYMENT}/:id`} element={<PaymentPage />} />
-          <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
+            <Route path={ROUTES.ONBOARDING} element={<OnboardingPage />} />
+            <Route path={ROUTES.HOME} element={<HomePage />} />
+            <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
+            <Route path={ROUTES.NEW_REQUEST} element={<NewRequestPage />} />
+            <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+            <Route path={ROUTES.BRANDING} element={<BrandingPage />} />
+            <Route path={`${ROUTES.PAYMENT}/:id`} element={<PaymentPage />} />
+            <Route path={ROUTES.NOT_FOUND} element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
