@@ -308,13 +308,15 @@ export function ProfileCustomizationStep({
             )}
           </div>
           <div className="bg-white rounded-lg p-4 shadow-sm">
-            <p className="font-medium mb-2">Oppassen op 27 juli</p>
+            <p className="font-medium mb-2 dark:text-background">
+              Oppassen op 27 juli
+            </p>
             <p className="text-2xl font-bold text-primary">€22,50</p>
             <div className="flex gap-2 mt-3 justify-center">
-              <div className="bg-primary/10 px-3 py-1 rounded-full text-xs">
+              <div className="bg-primary/20 px-3 py-1 rounded-full text-xs dark:text-background">
                 🏦 Tikkie
               </div>
-              <div className="bg-primary/10 px-3 py-1 rounded-full text-xs">
+              <div className="bg-primary/20 px-3 py-1 rounded-full text-xs dark:text-background">
                 💳 PayPal
               </div>
             </div>
